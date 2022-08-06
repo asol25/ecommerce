@@ -12,19 +12,19 @@ $modifyAPI = "$localhost/backend/modify.php";
 $deleteAPI = "$localhost/backend/delete.php";
 $insertAPI = "$localhost/backend/insert.php";
 
-$PATH = [
-    "/" => "client/Products.php",
-    "/ManagerProduct" => "client/ManagerProduct.php",
+$ROUTERS = [
+    "/" => "client/products/Products.php",
+    "/AddProduct" => "client/products/AddProduct.php",
+    "/ManagerProduct" => "client/managerProduct/ManagerProduct.php",
     "/ManagerDetailsProduct" => "client/ManagerDetailsProduct.php",
     "/ModifyProduct" => "client/ModifyProduct.php",
     "/ModifyManagerProduct" => "client/ModifyManagerProduct.php",
-    "/AddProduct" => "client/AddProduct.php",
     "/Logout" => "client/Logout"
 ];
 
-$configPathInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($PATH));
+$configPathInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
 if ($configPathInfoRequestUrl) {
-    $configPathInfoRequestUrl = $PATH[$_SERVER['REQUEST_URI']];
+    $configPathInfoRequestUrl = $ROUTERS[$_SERVER['REQUEST_URI']];
 }
 ?>
 
