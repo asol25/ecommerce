@@ -22,11 +22,11 @@ $result = $db->query($sql);
 
         </tr>
         <?php
-        $urlModify = "/ModifyManagerProduct";
+        $configRouteToModify = "/ModifyManagerProduct";
 
         while ($row = $result->fetch()) {
             $id = $row['MaSP'];
-            $urlDelete = "$deleteAPI?key_id=$id&action=";
+            $configRequestToDelete = "$deleteAPI?key_id=$id&action=$deleteActionManagerProduct";
 
             echo '<tr>
             <td>' . $row['MaSP'] . '</td>
@@ -37,8 +37,8 @@ $result = $db->query($sql);
             <td>' . $row['LoaiSP'] . '</td>
             <td>' . $row['MoTa'] . '</td>
             <td>
-                <a style="color: red;" href="' . $urlModify . '">Edit</a>
-                <a style="color: red;" href="' . $urlDelete . $deleteActionManagerProduct . '">Delete</a>
+                <a style="color: red;" href="' . $configRouteToModify . '">Edit</a>
+                <a style="color: red;" href="' . $configRequestToDelete . '">Delete</a>
             </td>
             </tr>';
         }

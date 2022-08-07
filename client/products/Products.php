@@ -11,17 +11,17 @@ $results = $db->query($sql);
             <td class="col-md-3"><a href="AddProduct">Thêm</a></td>
         </tr>
         <?php
-        $urlModify = '/ModifyProduct';
+        $configRouteToModify = '/ModifyProduct';
 
         while ($row = $results->fetch()) {
             $id = $row['MaLoai'];
-            $url = "$deleteAPI?key_id=$id&action=";
+            $configRequestToDelete = "$deleteAPI?key_id=$id&action=$deleteActionProduct";
 
             echo ' <tr>
             <td>' . $row[0] . '</td>
             <td>' . $row[1] . '</td>
-            <td><a href="' . $urlModify . '">Edit</a></td>
-            <td><a href="' . $url .  $deleteActionProduct . '">Delete</a></td>
+            <td><a href="' . $configRouteToModify . '">Edit</a></td>
+            <td><a href="' . $configRequestToDelete  . '">Delete</a></td>
         </tr>';
         } ?>
     </table>

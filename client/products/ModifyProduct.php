@@ -14,7 +14,7 @@
        <tr>
            <td><input type="text" value="" class="form-control" name="key_id"></td>
            <td><input type="text" value="" class="form-control" name="key_name"></td>
-           <td><button class="btn btn-info" name="modifyProduct">Cập nhật</button></td>
+           <td><button class="btn btn-info" name="ModifyProduct">Cập nhật</button></td>
        </tr>
    </tbody>
 </form>';

@@ -14,7 +14,7 @@ $insertAPI = "$localhost/backend/insert.php";
 
 $ROUTERS = [
     "/" => "client/products/Products.php",
-    "/AddProduct" => "client/products/AddProduct.php",
+    "/AddProduct" => "client/products/InsertProduct.php",
     "/ManagerProduct" => "client/managerProduct/ManagerProduct.php",
     "/ManagerDetailsProduct" => "client/ManagerDetailsProduct.php",
     "/ModifyProduct" => "client/ModifyProduct.php",
@@ -22,9 +22,9 @@ $ROUTERS = [
     "/Logout" => "client/Logout"
 ];
 
-$configPathInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
-if ($configPathInfoRequestUrl) {
-    $configPathInfoRequestUrl = $ROUTERS[$_SERVER['REQUEST_URI']];
+$configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
+if ($configRouteInfoRequestUrl) {
+    $configRouteInfoRequestUrl = $ROUTERS[$_SERVER['REQUEST_URI']];
 }
 ?>
 
@@ -72,7 +72,7 @@ if ($configPathInfoRequestUrl) {
         </nav>
 
         <article>
-            <?php include_once dirname(dirname(__FILE__)) . "/fix/$configPathInfoRequestUrl" ?>
+            <?php include_once dirname(dirname(__FILE__)) . "/fix/$configRouteInfoRequestUrl" ?>
         </article>
 
         <footer>Design By Chuong 2K12</footer>
