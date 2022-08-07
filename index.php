@@ -1,31 +1,9 @@
 <?php
 include_once dirname(dirname(__FILE__)) . '/fix/client/header.php';
-include_once dirname(dirname(__FILE__)) . '/fix/backend/connect.php';
-
-$PORT_SERVER = $_SERVER['SERVER_PORT'];
-$localhost = "http://localhost:" . $PORT_SERVER;
-
-$deleteActionProduct = 'deleteActionProduct';
-$deleteActionManagerProduct = 'deleteActionManagerProduct';
-
-$modifyAPI = "$localhost/backend/modify.php";
-$deleteAPI = "$localhost/backend/delete.php";
-$insertAPI = "$localhost/backend/insert.php";
-
-$ROUTERS = [
-    "/" => "client/products/Products.php",
-    "/AddProduct" => "client/products/InsertProduct.php",
-    "/ManagerProduct" => "client/managerProduct/ManagerProduct.php",
-    "/ManagerDetailsProduct" => "client/ManagerDetailsProduct.php",
-    "/ModifyProduct" => "client/ModifyProduct.php",
-    "/ModifyManagerProduct" => "client/ModifyManagerProduct.php",
-    "/Logout" => "client/Logout"
-];
-
-$configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
-if ($configRouteInfoRequestUrl) {
-    $configRouteInfoRequestUrl = $ROUTERS[$_SERVER['REQUEST_URI']];
-}
+include_once dirname(dirname(__FILE__)) . '/fix/backend/config/configDatabase.php';
+include_once dirname(dirname(__FILE__)) . '/fix/application/Routers/router.php';
+include_once dirname(dirname(__FILE__)) . '/fix/application/WebService/config.php';
+include_once dirname(dirname(__FILE__)) . '/fix/application/Routers/router.php';
 ?>
 
 <body>
@@ -56,7 +34,6 @@ if ($configRouteInfoRequestUrl) {
             width: 100%;
         }
     </style>
-
     <div class="main">
         <header style="text-align: center;">
             <h1>Trang quản lí sản phẩm SGM</h1>
@@ -74,10 +51,7 @@ if ($configRouteInfoRequestUrl) {
         <article>
             <?php include_once dirname(dirname(__FILE__)) . "/fix/$configRouteInfoRequestUrl" ?>
         </article>
-
         <footer>Design By Chuong 2K12</footer>
     </div>
-
 </body>
-
 </html>

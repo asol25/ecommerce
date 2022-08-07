@@ -11,7 +11,6 @@ $results = $db->query($sql);
             <td class="col-md-3"><a href="AddProduct">Thêm</a></td>
         </tr>
         <?php
-        $configRouteToModify = '/ModifyProduct';
 
         while ($row = $results->fetch()) {
             $id = $row['MaLoai'];
@@ -20,7 +19,7 @@ $results = $db->query($sql);
             echo ' <tr>
             <td>' . $row[0] . '</td>
             <td>' . $row[1] . '</td>
-            <td><a href="' . $configRouteToModify . '">Edit</a></td>
+            <td><a href="' . $configRouteToModifyProduct . '">Edit</a></td>
             <td><a href="' . $configRequestToDelete  . '">Delete</a></td>
         </tr>';
         } ?>

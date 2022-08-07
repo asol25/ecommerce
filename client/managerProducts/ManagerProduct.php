@@ -22,7 +22,6 @@ $result = $db->query($sql);
 
         </tr>
         <?php
-        $configRouteToModify = "/ModifyManagerProduct";
 
         while ($row = $result->fetch()) {
             $id = $row['MaSP'];
@@ -37,7 +36,7 @@ $result = $db->query($sql);
             <td>' . $row['LoaiSP'] . '</td>
             <td>' . $row['MoTa'] . '</td>
             <td>
-                <a style="color: red;" href="' . $configRouteToModify . '">Edit</a>
+                <a style="color: red;" href="' . $configRouteToModifyManagerProduct . '">Edit</a>
                 <a style="color: red;" href="' . $configRequestToDelete . '">Delete</a>
             </td>
             </tr>';

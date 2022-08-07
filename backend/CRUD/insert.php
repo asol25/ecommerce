@@ -1,5 +1,5 @@
 <?php
-include_once './connect.php';
+include_once '../config/configDatabase.php';
 
 function initialize($db)
 {

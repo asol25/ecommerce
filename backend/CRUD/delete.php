@@ -1,5 +1,7 @@
 <?php
-include_once './connect.php';
+include_once '../config/configDatabase.php';
+include_once '../../application/WebService/config.php';
+
 function initialize($db)
 {
     if (isset($_GET['key_id']) && $_GET['action'] === 'deleteActionProduct') {
