@@ -9,10 +9,10 @@
             <td scope="col">Loại Sản Phẩm</td>
             <td scope="col">Mô Tả</td>
             <td scope="col">Chỉnh Sữa</td>
-
         </tr>
+
         <?php
-        echo '<form method="post" action="' . $modifyAPI . '">
+        echo '<form method="post" action="' . $requestModifyAPI . '">
         <tbody>
             <td>
                 <input type="text" name="key_id">

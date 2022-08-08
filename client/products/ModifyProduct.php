@@ -2,7 +2,7 @@
     <title>Sửa sản phẩm </title>
     <table class='table table-striped table-bordered table-dark table-hover'>
         <?php
-        echo '<form method="post" action="' . $modifyAPI . '">
+        echo '<form method="post" action="' . $requestInsertAPI . '">
    <thead>
        <tr>
            <th scope="col"`>Mã Loại</th>

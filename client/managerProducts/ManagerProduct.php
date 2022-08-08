@@ -4,11 +4,13 @@ include_once("connect.php");
 
 $sql = "SELECT * FROM sanpham";
 $result = $db->query($sql);
+
+$configRouterToInsertManagerProduct = 'InsertManagerProduct';
 ?>
 
 <body>
-    <button type="button" class="btn btn-lg btn-primary" disabled>Thêm</button>
-    <button type="button" class="btn btn-secondary btn-lg" disabled>Xóa</button>
+    <?php echo ' <a type="button" class="btn btn-lg btn-primary" href="' . $configRouterToInsertManagerProduct . '">Thêm</a>' ?>
+    <!-- <a type="button" class="btn btn-secondary btn-lg">Xóa</a> -->
     <table class="table">
         <tr>
             <td scope="col">Mã Sản Phẩm</td>
@@ -25,7 +27,7 @@ $result = $db->query($sql);
 
         while ($row = $result->fetch()) {
             $id = $row['MaSP'];
-            $configRequestToDelete = "$deleteAPI?key_id=$id&action=$deleteActionManagerProduct";
+            $configRequestToDelete = "$requestDeleteAPI?key_id=$id&action=$deleteActionManagerProduct";
 
             echo '<tr>
             <td>' . $row['MaSP'] . '</td>

@@ -174,7 +174,7 @@ ALTER TABLE `hoadon`
 -- AUTO_INCREMENT cho bảng `loaisp`
 --
 ALTER TABLE `loaisp`
-  MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 0;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`

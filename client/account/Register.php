@@ -144,7 +144,7 @@
             }
         }
     </style>
-    <h2>Modal Login Form</h2>
+    <h2>Modal Register Form</h2>
 
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
@@ -163,10 +163,11 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <button type="submit" name="actionInfoLogin">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password again" name="psw" required>
+
+                <button type="submit" name="actionInfoRegisters">Register</button>
+                <div><a href="/Login">Login now</a></div>
             </div>
 
             <div class="container" style="background-color:#f1f1f1">

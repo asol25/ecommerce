@@ -14,7 +14,7 @@ $results = $db->query($sql);
 
         while ($row = $results->fetch()) {
             $id = $row['MaLoai'];
-            $configRequestToDelete = "$deleteAPI?key_id=$id&action=$deleteActionProduct";
+            $configRequestToDelete = "$requestDeleteAPI?key_id=$id&action=$deleteActionProduct";
 
             echo ' <tr>
             <td>' . $row[0] . '</td>
