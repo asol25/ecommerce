@@ -15,10 +15,13 @@
                 <input type="text" placeholder="Enter Username" name="key_name" required>
                 </div>
 
-                <div>
-                <label for="uname"><b>Ảnh Đại Diện	</b></label>
-                <input type="text" placeholder="Enter Username" name="key_avt" >
-                </div>
+                
+            <progress value="0" id="uploader" max="100">0%</progress><br><br>
+            // get the file from user
+            <input id="photo"class="file"type="file" name="mainimage" 
+                               value="" onchange="GetPictureInfoViews()"><br><br>
+            // submit the chosen file
+            <button id="submit_link"type="submit" name="button">Save</button>
 
                 <div>
                 <label for="uname"><b>Giá Cũ</b></label>

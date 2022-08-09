@@ -17,17 +17,16 @@ function initialize($db)
 
     if ($_POST['actionInfoRegisters']) {
         $encrypt_pass = md5($_POST['key_password']);
-        $sql = "INSERT INTO `user`(`username`, `password`) VALUES ('{$_POST['key_name']}', '{$encrypt_pass}')";
+        $ran_id = rand(time(), 100000000);
+        $sql = "INSERT INTO `user`(`unique_id`,`username`, `password`) VALUES ('{$ran_id} ','{$_POST['key_name']}', '{$encrypt_pass}')";
         $res = $db->exec($sql);
-        $sql = "SELECT * FROM `user` WHERE `username` = '{$_POST['key_name']}'";
-        $res = $db->exec($sql);
-        $row = mysqli_num_rows($res);
-        if ($row) {
-            $_SESSION['username'] =  $encrypt_pass;
+        if(isset($res)) {
+            $sql = "SELECT * FROM `user` WHERE `unique_id` = '{$ran_id}'";
+            $res = $db->exec($sql);
         }
     }
 
-    header('Location: /');
+    // header('Location: /');
 }
 
 function isCheckPassword($password_Check, $password)

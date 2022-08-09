@@ -163,9 +163,6 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password again" name="psw" required>
-
                 <button type="submit" name="actionInfoRegisters">Register</button>
                 <div><a href="/Login">Login now</a></div>
             </div>

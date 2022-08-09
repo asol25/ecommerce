@@ -42,7 +42,7 @@ session_start();
                 <li><a href="ManagerCustomer">Quản lí khách hàng</a></li>
                 <li><a href="ManagerDetailsProduct">Quản lí đơn hàng</a></li>
                 <?php
-                if ($_SESSION['username']) {
+                if (isset($_SESSION['username'])) {
                     echo '<li><a href="Logout">Logout</a></li>';
                 } else {
                     echo '<li><a href="Register">Register</a></li>';
