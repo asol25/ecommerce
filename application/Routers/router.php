@@ -17,6 +17,11 @@ $ROUTERS_USERS = [
     "/Shop" => "client/layoutUsers/shop.php",
 ];
 
+$LAYOUT_USERS = [
+    "/" => "main.php",
+    "/Shop" => "shop.php",
+];
+
 $configRouteToModifyProduct = '/ModifyProduct';
 $configRouteToModifyManagerProduct = "/ModifyManagerProduct";
 
