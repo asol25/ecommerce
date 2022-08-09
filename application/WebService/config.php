@@ -12,4 +12,3 @@ $requestAuthAPI = "$localhost/backend/authorization/authorization.php";
 $requestImagesService = "$localhost/backend/imagesServices/imagesService.php";
 
 ?>
-s
