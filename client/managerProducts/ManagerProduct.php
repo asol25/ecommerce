@@ -1,7 +1,4 @@
 <?PHP
-include_once './header.php';
-include_once("connect.php");
-
 $sql = "SELECT * FROM sanpham";
 $result = $db->query($sql);
 

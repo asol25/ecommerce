@@ -1,6 +1,4 @@
 <?php
-// Start the session
-session_start();
 ?>
 
 <body>
@@ -42,17 +40,17 @@ session_start();
                 <li><a href="ManagerCustomer">Quản lí khách hàng</a></li>
                 <li><a href="ManagerDetailsProduct">Quản lí đơn hàng</a></li>
                 <?php
-                if (isset($_SESSION['username'])) {
+                if (isset($_SESSION['admin'])) {
                     echo '<li><a href="Logout">Logout</a></li>';
                 } else {
-                    echo '<li><a href="Register">Register</a></li>';
+                    header('Location: /');
                 }
                 ?>
             </ul>
         </nav>
 
         <article>
-            <?php include_once dirname(dirname(__FILE__)) . "/$configRouteInfoRequestUrl" ?>
+            <?php include_once dirname(dirname(__FILE__)) . "/$configRouteInfoRequestUrl"; ?>
         </article>
         <footer>Design By Chuong 2K12</footer>
     </div>

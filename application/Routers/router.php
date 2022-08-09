@@ -1,5 +1,9 @@
 <?php
-$ROUTERS = [
+
+$configRouteToModifyProduct = '/ModifyProduct';
+$configRouteToModifyManagerProduct = "/ModifyManagerProduct";
+
+$ROUTERS_ADMIN = [
     "/" => "client/products/Products.php",
     "/AddProduct" => "client/products/InsertProduct.php",
     "/ModifyProduct" => "client/products/ModifyProduct.php",
@@ -13,33 +17,25 @@ $ROUTERS = [
 ];
 
 $ROUTERS_USERS = [
-    "/" => "client/layoutUsers/index.php",
-    "/Shop" => "client/layoutUsers/shop.php",
-];
-
-$LAYOUT_USERS = [
     "/" => "main.php",
     "/Shop" => "shop.php",
+    "/auth" => "auth.php",
 ];
 
-$configRouteToModifyProduct = '/ModifyProduct';
-$configRouteToModifyManagerProduct = "/ModifyManagerProduct";
 
 $configRouteInfoRequestUrl = null;
 
-if (empty($_SESSION['admin'])) {
-    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS_USERS));
-    ConfigCallBackUrl($configRouteInfoRequestUrl, $ROUTERS_USERS);
+if (isset($_SESSION['admin'])) {
+    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS_ADMIN));
+    ConfigCallBackUrl($ROUTERS_ADMIN);
 } else {
-    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
-    ConfigCallBackUrl($configRouteInfoRequestUrl, $ROUTERS);
+    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS_USERS));
+    ConfigCallBackUrl($ROUTERS_USERS);
 }
 
-
-
-function ConfigCallBackUrl($configRouteInfoRequestUrl, $ROUTERS)
+function ConfigCallBackUrl($ROUTERS)
 {
-    if ($configRouteInfoRequestUrl === true) {
+    if ($GLOBALS['configRouteInfoRequestUrl'] === true) {
         $GLOBALS['configRouteInfoRequestUrl'] = $ROUTERS[$_SERVER['REQUEST_URI']];
         http_response_code(200);
     } else {

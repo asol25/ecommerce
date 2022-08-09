@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <body>
     <table class="table">
         <tr>
