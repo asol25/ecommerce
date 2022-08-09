@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="zxx">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Male-Fashion | Template</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="client/layoutUsers/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="client/layoutUsers/css/style.css" type="text/css">
-</head>
+<?php include_once 'header.php'; ?>
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -99,7 +75,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Home</a></li>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="Shop">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About Us</a></li>
@@ -199,7 +175,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Accessories</h2>
-                            <a href="#">Shop now</a>
+                            <a href="shop">Shop now</a>
                         </div>
                     </div>
                 </div>
@@ -712,17 +688,9 @@
     </div>
     <!-- Search End -->
 
-    <!-- Js Plugins -->
-    <script src="client/layoutUsers/js/jquery-3.3.1.min.js"></script>
-    <script src="client/layoutUsers/js/bootstrap.min.js"></script>
-    <script src="client/layoutUsers/js/jquery.nice-select.min.js"></script>
-    <script src="client/layoutUsers/js/jquery.nicescroll.min.js"></script>
-    <script src="client/layoutUsers/js/jquery.magnific-popup.min.js"></script>
-    <script src="client/layoutUsers/js/jquery.countdown.min.js"></script>
-    <script src="client/layoutUsers/js/jquery.slicknav.js"></script>
-    <script src="client/layoutUsers/js/mixitup.min.js"></script>
-    <script src="client/layoutUsers/js/owl.carousel.min.js"></script>
-    <script src="client/layoutUsers/js/main.js"></script>
+    <?php 
+    include_once 'footer.php';
+    ?>
 </body>
 
 </html>

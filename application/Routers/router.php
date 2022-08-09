@@ -12,13 +12,32 @@ $ROUTERS = [
     "/Register" => "client/account/Register.php",
 ];
 
+$ROUTERS_USERS = [
+    "/" => "client/layoutUsers/index.php",
+    "/Shop" => "client/layoutUsers/shop.php",
+];
+
 $configRouteToModifyProduct = '/ModifyProduct';
 $configRouteToModifyManagerProduct = "/ModifyManagerProduct";
 
-$configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
-if ($configRouteInfoRequestUrl === true) {
-    $configRouteInfoRequestUrl = $ROUTERS[$_SERVER['REQUEST_URI']];
-    http_response_code(200);
+$configRouteInfoRequestUrl = null;
+
+if (empty($_SESSION['admin'])) {
+    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS_USERS));
+    ConfigCallBackUrl($configRouteInfoRequestUrl, $ROUTERS_USERS);
 } else {
-    http_response_code(404);
+    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS));
+    ConfigCallBackUrl($configRouteInfoRequestUrl, $ROUTERS);
+}
+
+
+
+function ConfigCallBackUrl($configRouteInfoRequestUrl, $ROUTERS)
+{
+    if ($configRouteInfoRequestUrl === true) {
+        $GLOBALS['configRouteInfoRequestUrl'] = $ROUTERS[$_SERVER['REQUEST_URI']];
+        http_response_code(200);
+    } else {
+        http_response_code(404);
+    }
 }
