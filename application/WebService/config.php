@@ -8,6 +8,7 @@ $deleteActionManagerProduct = 'deleteActionManagerProduct';
 $requestModifyAPI = "$localhost/backend/CRUD/modify.php";
 $requestDeleteAPI = "$localhost/backend/CRUD/delete.php";
 $requestInsertAPI = "$localhost/backend/CRUD/insert.php";
+$requestCartAPI = "$localhost/backend/CRUD/Cart.php";
 $requestAuthAPI = "$localhost/backend/authorization/authorization.php";
 $requestImagesService = "$localhost/backend/imagesServices/imagesService.php";
 

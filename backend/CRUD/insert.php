@@ -16,6 +16,7 @@ function initialize($db)
     $res = $db->exec($sql);
     }
 
+   
     header('Location: /');
 }
 

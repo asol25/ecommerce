@@ -20,6 +20,7 @@ $ROUTERS_USERS = [
     "/" => "main.php",
     "/Shop" => "shop.php",
     "/auth" => "auth.php",
+    "/Shop-details" => "shop-details.php",
 ];
 
 

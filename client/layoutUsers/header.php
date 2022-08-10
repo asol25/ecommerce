@@ -20,5 +20,4 @@ rel="stylesheet">
 <link rel="stylesheet" href="client/layoutUsers/css/owl.carousel.min.css" type="text/css">
 <link rel="stylesheet" href="client/layoutUsers/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="client/layoutUsers/css/style.css" type="text/css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
 </head>';

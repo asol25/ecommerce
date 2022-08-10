@@ -26,11 +26,11 @@ async function ConfigCloudStorage(selectedFile) {
     const uploadTaskSnapshot = storageRef.put(selectedFile).then(() => {
         return firebase.storage().ref(`${storagePathFolder}/${uniqueName}`).getDownloadURL();
     });
-    let imageInfoUrl = uploadTaskSnapshot.then((result) => { return imageInfoUrl = result });
+    let uploadTask = uploadTaskSnapshot.then((result) => { return imageInfoUrl = result });
 
-    if (await imageInfoUrl) {
+    if (await uploadTask) {
         document.getElementById("submit_link").disabled = false;
-        document.getElementById("input_link").value = imageInfoUrl;
+        document.getElementById("input_link").value = uploadTask;
     }
 
 }
