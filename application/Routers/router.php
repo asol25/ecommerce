@@ -23,23 +23,35 @@ $ROUTERS_USERS = [
     "/Shop-details" => "shop-details.php",
 ];
 
+$pathRouter = $_SERVER['REQUEST_URI'] ?? '/';
+$position = strpos($pathRouter, "?");
 
 $configRouteInfoRequestUrl = null;
 
 if (isset($_SESSION['admin'])) {
-    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS_ADMIN));
-    ConfigCallBackUrl($ROUTERS_ADMIN);
+    $configRouteInfoRequestUrl = in_array($pathRouter, array_keys($ROUTERS_ADMIN));
+    ConfigCallBackRedirectUrl($ROUTERS_ADMIN);
 } else {
-    $configRouteInfoRequestUrl = in_array($_SERVER['REQUEST_URI'], array_keys($ROUTERS_USERS));
-    ConfigCallBackUrl($ROUTERS_USERS);
+    if ($position) {
+        $GLOBALS['pathRouter'] = substr($pathRouter, 0, $position);
+    }
+    $configRouteInfoRequestUrl = in_array($pathRouter, array_keys($ROUTERS_USERS));
+    ConfigCallBackRedirectUrl($ROUTERS_USERS);
 }
 
-function ConfigCallBackUrl($ROUTERS)
+function ConfigCallBackRedirectUrl($ROUTERS)
 {
+    $successful = 200;
+    $notFound = 404;
     if ($GLOBALS['configRouteInfoRequestUrl'] === true) {
-        $GLOBALS['configRouteInfoRequestUrl'] = $ROUTERS[$_SERVER['REQUEST_URI']];
-        http_response_code(200);
+        $GLOBALS['configRouteInfoRequestUrl'] = setRedirectUrl($ROUTERS, $GLOBALS['configRouteInfoRequestUrl'], $GLOBALS['pathRouter']);
+        http_response_code($successful);
     } else {
-        http_response_code(404);
+        http_response_code($notFound);
     }
+}
+
+function setRedirectUrl($ROUTERS, $router, $path)
+{
+    return $router = $ROUTERS[$path];
 }

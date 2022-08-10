@@ -40,12 +40,11 @@ $total = null;
                                 </td>
                                 <td class="cart__price">$ ' . $value['key_price'] . '</td>
                                 <td class="cart__close">
-                                <a href="' . $requestCartAPI . '?key_id=' .$key. '&action=RemoveCart' . ' " class="add-cart"><i class="fa fa-close"></i></a>
+                                <a href="' . $requestCartAPI . '?key_id=' . $key . '&action=RemoveCart' . ' " class="add-cart"><i class="fa fa-close"></i></a>
                                 </td>
                             </tr>';
                             }
-
-                           $GLOBALS['total'] += $value['key_price'];
+                            $GLOBALS['total'] += (floatval($value['key_price']) * 10);
                             ?>
                         </tbody>
                     </table>

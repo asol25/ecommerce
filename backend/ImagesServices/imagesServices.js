@@ -12,10 +12,9 @@ function GetPictureInfoViews() {
     let selectedFile;
     let picture = document.getElementById("photo");
 
-    // selected file is that file which user chosen by html form
     selectedFile = picture.files[0];
     document.getElementById("submit_link").disabled = true;
-    ConfigCloudStorage(selectedFile); // call below written function
+    ConfigCloudStorage(selectedFile);
 }
 
 async function ConfigCloudStorage(selectedFile) {
@@ -26,27 +25,11 @@ async function ConfigCloudStorage(selectedFile) {
     const uploadTaskSnapshot = storageRef.put(selectedFile).then(() => {
         return firebase.storage().ref(`${storagePathFolder}/${uniqueName}`).getDownloadURL();
     });
-    let uploadTask = uploadTaskSnapshot.then((result) => { return imageInfoUrl = result });
+    let uploadTask = uploadTaskSnapshot.then((result) => { return uploadTask = result });
 
     if (await uploadTask) {
+        console.log(uploadTask);
         document.getElementById("submit_link").disabled = false;
         document.getElementById("input_link").value = uploadTask;
     }
-
-}
-
-function TransferToServer(path) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:3000/backend/imagesServices/imagesService.php", true);
-    xhr.onload = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                let data = xhr.response;
-                if (data === "success") {
-                }
-            }
-        }
-    };
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(path);
 }
