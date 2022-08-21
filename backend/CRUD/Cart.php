@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['Cart'])) {
-    CreateStorageCart($_SESSION['Cart']);
+    CreateStorageCart();
 }
 
 if ($_GET['action'] === "AddCart") {
@@ -33,7 +33,7 @@ function CheckItemInfoStorage($id, $storage, $key)
     return in_array($id, array_values($storage[$key]));
 }
 
-function CreateStorageCart($storage)
+function CreateStorageCart()
 {
-    return $storage = array();
+    $_SESSION['Cart']= array();
 }

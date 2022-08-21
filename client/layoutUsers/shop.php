@@ -82,7 +82,6 @@
                <div class="row">
                    <?php
                     if (isset($_GET['filter'])) {
-                        var_dump($_GET['filter']);
                         $GLOBALS['sql'] = "SELECT * FROM `sanpham` WHERE `LoaiSP` = '{$_GET['filter']}'";
                     }
                     $product = $db->query($sql);

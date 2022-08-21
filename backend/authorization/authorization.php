@@ -28,27 +28,36 @@ function CheckAccountExits($db, $encrypt_pass)
 function ControllerRouter($encrypt_pass, $_instant)
 {
     print_r('Start statement Controller -> ');
-    if ($_instant['PASSWORD'] === $_SESSION['admin']) {
+    if ($GLOBALS['_instant']['PASSWORD'] === $_SESSION['admin']) {
         print_r('Account Admin');
 
         unset($_SESSION['user']);
+        header('Location: /');
     } else {
         print_r('Account User');
-
         unset($_SESSION['admin']);
         $_SESSION['user'] = $encrypt_pass;
+        header('Location: /');
     }
-    header('Location: /');
 }
 
-function isCheckedActionLogin($db, $encrypt_pass,  $_instant)
+function isCheckedActionLogin($db, $encrypt_pass)
 {
-    $isCheckedAccount = CheckAccountExits($db, $encrypt_pass, $_instant);
+    $isCheckedAccount = CheckAccountExits($db, $encrypt_pass);
     if ($isCheckedAccount) {
-        ControllerRouter($encrypt_pass, $_instant);
-    } else {
-        unset($_SESSION['admin']);
-        header('Location: /auth');
+        $isUsername = $_POST['key_username'] === "admin";
+        $isPassword =  $encrypt_pass === $_SESSION['admin'];
+        $isCheckedAdmin = $isUsername && $isPassword;
+
+        if ($isCheckedAdmin) {
+            CheckAccountAdmin($db, $encrypt_pass, $isCheckedAdmin);
+            unset($_SESSION['user']);
+            header('Location: /');
+        } else {
+            unset($_SESSION['admin']);
+            $_SESSION['user'] = $encrypt_pass;
+            header('Location: /');
+        }
     }
 }
 
@@ -59,17 +68,14 @@ function isCheckedActionRegistered($db, $encrypt_pass)
     $isPassword =  $encrypt_pass === $_SESSION['admin'];
     $isChecked = $isUsername && $isPassword;
 
-    print_r("Account Admin is ->");
-    var_dump($isChecked);
     $ACCOUNT_EXITS = CheckAccountAdmin($db, $encrypt_pass, $isChecked);
 
-    print_r("Account user registered -> ");
-    var_dump($ACCOUNT_EXITS);
-    if ($ACCOUNT_EXITS === false) {
+    if (!$ACCOUNT_EXITS) {
         $ran_id = rand(time(), 100000000);
         $sql = "INSERT INTO `users`(`unique_id`,`username`, `password`) VALUES ('{$ran_id}','{$_POST['key_username']}', '{$encrypt_pass}')";
         $db->exec($sql);
-        header('Location: /auth');
+        $_SESSION['users'] = $encrypt_pass;
+        header('Location: /');
     }
 }
 function isCheckPassword($password_Check, $password)
@@ -86,7 +92,7 @@ function initialize($db)
 
     if (isset($_POST['actionLoginForm'])) {
         print_r('Login -> ');
-        isCheckedActionLogin($db, $encrypt_pass,  $_instant);
+        isCheckedActionLogin($db, $encrypt_pass);
     } else {
         print_r('Register -> ');
         isCheckedActionRegistered($db, $encrypt_pass);

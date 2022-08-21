@@ -11,7 +11,14 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="auth">Sign in</a>
+                               <?php
+                               if (empty($_SESSION['user'])) {
+                                echo '<a href="auth">Sign in</a>';
+                               } else {
+                                   unset($_SESSION['user']);
+                                   echo '<a href="auth">Logout</a>';
+                               }
+                               ?>
                                 <a href="#">FAQs</a>
                             </div>
                             <div class="header__top__hover">

@@ -22,6 +22,7 @@ $total = null;
                                 $sql = "SELECT `HinhDaiDien` FROM `sanpham` WHERE `MaSP` ='{$value['key_id']}'";
                                 $result = $db->query($sql);
                                 $row = $result->fetch();
+
                                 echo '   <tr>
                                 <td class="product__cart__item">
                                     <div class="product__cart__item__pic">
@@ -43,8 +44,8 @@ $total = null;
                                 <a href="' . $requestCartAPI . '?key_id=' . $key . '&action=RemoveCart' . ' " class="add-cart"><i class="fa fa-close"></i></a>
                                 </td>
                             </tr>';
+                                $GLOBALS['total'] += number_format($value['key_price'], 2);
                             }
-                            $GLOBALS['total'] += (floatval($value['key_price']) * 10);
                             ?>
                         </tbody>
                     </table>
@@ -52,14 +53,14 @@ $total = null;
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn">
-                            <a href="#">Continue Shopping</a>
+                            <a href="/Shop">Continue Shopping</a>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
+                    <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="continue__btn update__btn">
                             <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-4">
@@ -73,13 +74,16 @@ $total = null;
                 <div class="cart__total">
                     <h6>Cart total</h6>
                     <?php
-
+                    $totalPrice = $total ?? 0;
                     echo " <ul>
-                        <li>Subtotal <span>$ $total</span></li>
-                        <li>Total <span>$ $total</span></li>
+                        <li>Subtotal <span>$   $totalPrice</span></li>
+                        <li>Total <span>$   $totalPrice</span></li>
                     </ul>";
+
+                    echo "
+                    <a href='$requestPaymentAPI' class='primary-btn'>Proceed to checkout</a>
+                    ";
                     ?>
-                    <a href="#" class="primary-btn">Proceed to checkout</a>
                 </div>
             </div>
         </div>

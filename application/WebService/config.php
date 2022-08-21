@@ -10,5 +10,6 @@ $requestDeleteAPI = "$localhost/backend/CRUD/delete.php";
 $requestInsertAPI = "$localhost/backend/CRUD/insert.php";
 $requestCartAPI = "$localhost/backend/CRUD/Cart.php";
 $requestAuthAPI = "$localhost/backend/authorization/authorization.php";
+$requestPaymentAPI = "$localhost/backend/paymentService/paymentService.php";
 $filter = "$localhost/backend/CRUD/filter.php";
 ?>

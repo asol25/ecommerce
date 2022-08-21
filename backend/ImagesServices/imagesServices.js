@@ -15,7 +15,7 @@ function GetPictureInfoViews() {
     selectedFile = picture.files[0];
     document.getElementById("submit_link").disabled = true;
     ConfigCloudStorage(selectedFile);
-}
+};
 
 async function ConfigCloudStorage(selectedFile) {
     const currentTimestamp = '123';
